@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--FONT AWSOME-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+
+    <!--BOOTSTRAP 5-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
+
+    <!--My Style-->
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: gainsboro;
+        }
+
+        .logo {
+            color: #fff;
+            font-family: 'Contrail One', cursive;
+            margin-top: 0.2rem;
+            padding-top: 0.5rem;
+        }
+
+        .wrapper {
+
+            padding: 4rem 2rem;
+            width: 40%;
+            min-height: auto;
+            margin: 5rem auto;
+            background-color: white;
+            border-radius: 4px;
+        }
+
+        .header h2 {
+            margin: 0;
+        }
+
+        table {
+            border: 1px solid black;
+        }
+
+        input {
+            margin: 1rem auto;
+        }
+
+    </style>
+    <title>Search Contact List</title>
+
+</head>
+
+<body>
+
+    <div class="row pt-1 m-0 bg-dark">
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <div>
+                <h1 class="logo">JD</h1>
+            </div>
+        </div>
+        <div class="col-md-6 p-2">
+            <div class="nav d-flex justify-content-center">
+                <h2 class="text-light align-self-center">Search Contact List</h2>
+            </div>
+        </div>
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <h5 class="text-light date"></h5>
+        </div>
+    </div>
+
+
+    <div class="wrapper">
+
+        <h1 class="text-center pb-4 fw-bold">My Contacts <span><i class="far fa-address-card"></i></span></h1>
+        <input type="text" name="search" placeholder="Search..." class="form-control" id="search">
+
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Daniel</td>
+                    <td>36</td>
+                    <td>123456789</td>
+                </tr>
+                <tr>
+                    <td>Michaela</td>
+                    <td>39</td>
+                    <td>987654321</td>
+                </tr>
+                <tr>
+                    <td>Mariana</td>
+                    <td>39</td>
+                    <td>963258741</td>
+                </tr>
+                <tr>
+                    <td>Terry</td>
+                    <td>21</td>
+                    <td>147852369</td>
+                </tr>
+                <tr>
+                    <td>Tom</td>
+                    <td>54</td>
+                    <td>98654123</td>
+                </tr>
+                <tr>
+                    <td>Sam</td>
+                    <td>37</td>
+                    <td>98654123</td>
+                </tr>
+                <tr>
+                    <td>Jimmy</td>
+                    <td>14</td>
+                    <td>98654123</td>
+                </tr>
+                <tr>
+                    <td>Nicle</td>
+                    <td>42</td>
+                    <td>98654123</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        //Date
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        let yy = today.getFullYear();
+        let day = `${dd}.${mm}.${yy}`;
+        document.querySelector('.date').innerText = day;
+
+
+
+        //Filter Function
+        const searchInput = document.querySelector("#search");
+        const rows = document.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('keyup', (e)=>{
+           const q = e.target.value;
+           console.log(q);
+           rows.forEach(row =>{
+                row.querySelector('td').textContent.toLowerCase().startsWith(q)
+                ? row.style.display = '' 
+                : row.style.display = 'none';
+           })
+        })
+
+    </script>
+
+</body>
+
+</html>
